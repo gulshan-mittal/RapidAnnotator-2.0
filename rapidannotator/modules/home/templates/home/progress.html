@@ -5,30 +5,27 @@
 {% block head %}
   {{ super() }}
   <style type="text/css">
-    .important { color: #336699; }
+	.important { color: #336699; }
+	/* Split the screen in half */
   </style>
 {% endblock head %}
 
 {% block home_body %}
 <body>
-	<div class="container-fluid">
-		<h4 style="text-align:center"> Your Progress </h4>
-		<hr>
-		<div class="info1 hidden-element">
-				<br>
-				<div class="alert alert-info col-md-6" role="alert">
-					You are not Annotator for any experiment !
-				</div>
+	
+	<div class='row'>
+		<div class="col-md-6">
+			<h3 style="text-align: center; margin-top: 3em;"> Your Progress </h3>
+			<div class="info1 hidden-element">
+					<br>
+					<div class="alert alert-info col-md-4" role="alert"> You are not Annotator for any experiment ! </div>
+			</div>
+			<div id = "yourProgress" class="col-md-6" style="margin-top: 7em;"></div>
+			<br><br><br><br>
 		</div>
-		<div id = "yourProgress" class="col-md-6" style="width:50%; margin-bottom: 10%; margin-left: 30%">
-		</div>
-		<div> </div>
-	</div>
-	<div class="container-fluid">
-		<h4 style="text-align:center">Check Progress for each Experiment</h4>
-		<hr>
-		<div class="row">
-			<div class="col-md-3" style="margin-right:10%">
+		<div class="col-md-4">
+			<h4 style="text-align: center;"> Progress for each Experiment</h4><br>
+			<div >
 				<form>
 					<div class="form-group">
 						<label for="sel1">Select an Experiment :</label>
@@ -40,18 +37,20 @@
 						</select>
 					</div>
 				</form>
+				<br>
 			</div>
 			<div class="info2 hidden-element">
 				<br>
-				<div class="alert alert-info col-md-6" role="alert">
+				<div class="alert alert-info col-md-4" role="alert">
 					There are no Annotators for this experiment.
 				</div>
 			</div>
-			<br>
-			<div id = "experimentProgress" class="col-md-6" style = "width: 550px; height: 380px; margin: 0 auto;">
+			<br><br>
+			<div id = "experimentProgress" class="col-md-4" style = "width: 550px; height: 380px; margin: 0 auto;">
 			</div>
 		</div>
 	</div>
+	
 </body>
 
 <script type="text/javascript">
@@ -92,7 +91,8 @@
 			var data = google.visualization.arrayToDataTable(dataVis);
 			var ht = 350, wdth = 570;
 			var brs = 'horizontal';
-			if(charId != 'experimentProgress'){
+
+			if(charId == 'exerimentProgress'){
 				brs = 'vertical';
 				if(size > 1){
 					wdth = 160*size;
@@ -111,7 +111,7 @@
 			}
 			var options = {
 				title: 'Progress (in percentage)',
-				legend: { position: 'Top' },
+				legend: { position: 'Bottom' },
 				bar: { groupWidth: '22%' },
 				bars: brs,
 				width: wdth,
